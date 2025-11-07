@@ -1,31 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.sumb-btn{
+    background-color: #2e4156;
 }
-.nav-bar {
-    background-color: #2e4165;
-    opacity: 0.9;
-}
-.nav-bar .List {
-    color: white;
-    font-size: 24px;
-    margin: 12px 20px;
-    float: left;
-    cursor: pointer;    
-}
-.nav-bar .settings {
-    color: white;
-    font-size: 24px;
-    margin: 12px 20px;
-    float: right;
-    cursor: pointer;
-}
-.sumb-btn {
-    background-color: #2e4165;
-}
-.sumb-btn:hover{
-    background-color: #1a2d42;
-    transtion
 
+.sumb-btn:active{
+    background-color: #162534;
 }
