@@ -9,14 +9,55 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-100 m-0">
+<body class="bg-gray-100 m-0 custom-scroll">
 
   <nav class="nav-bar h-24 flex items-center justify-between bg-white shadow-md px-6 z-20 sticky top-0">
     <i class="fa-solid fa-gear settings text-xl cursor-pointer"></i>
     <i class="fa-solid fa-list List text-xl cursor-pointer"></i>
   </nav>
 
-  <div id="sidebar" class="fixed top-24 left-0 w-52 h-[calc(100vh-6rem)] bg-gray-800 text-white p-4 overflow-y-auto z-10"></div>
+  <div id="sidebar-container" class="fixed top-24 left-0 w-52 h-[calc(100vh-6rem)] bg-gray-800 text-white p-4 overflow-y-auto z-10 custom-scroll">
+    <ul class="sidebr-list flex flex-col gap-4 position-relative">
+        <li class="nav-item">
+            <a href="#" class="float-left">
+                <span>Dashboard</span>
+                <i class="fa-solid fa-border-all"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="float-left">
+                <span>Create Product</span>
+                <i class="fa-solid fa-box-open"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="float-left">
+                <span>Product List</span>
+                <i class="fa-solid fa-bars-staggered"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="float-left">
+                <span>Profile</span>
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="float-left">
+                <span>Logout</span>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                
+            </a>
+        </li>
+
+    </ul>
+   
+
+
+
+
+
+  </div>
 
   <div class="max-w-7xl mx-auto p-6 ml-52"> <h2 class="text-3xl font-bold text-gray-800 mb-6">Create Products</h2>
 
