@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn_toggle.classList.remove("fa-xmark");  
     }
   });
-  const
+  
 });
 
 const quantityinput = document.getElementById("quantity");
