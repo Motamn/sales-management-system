@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterOverlay =document.getElementById("filter-overlay");
   const closeMoldalbtn =document.getElementById("close-modal-button");
   const cancelModalbtn =document.getElementById("cancel-modal-button");
+  const filterMoladbtn= document.getElementById("filter-modal-button");
 
   filterButton.addEventListener("click",()=>{
     filterModal.classList.remove("hidden");
@@ -45,56 +46,83 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterPrice =document.getElementById("filter_price");
   const filterAvailability =document.getElementById("filter_availability");
 
+  
+
   function filterProducts(){
     const nameValue = filterName.value.toLowerCase();
     const categoryValue= filterCategory.value;
-    const codeValue = parseInt(filterCode.value);
+    const codeValue = filterCode.value.toLowerCase();
     const priceValue = parseFloat(filterPrice.value);
     const availValue = filterAvailability.value; 
-    const rows = tableBody.getElementsByTagName("tr");
+    const rows = tableBody.querySelectorAll("tr");
+
 
     rows.forEach(row => {
-      const nameRow=row.cells[1].textcontent.toLowerCase();
-      const codeRow=parseInt(row.cells[2].textcontent);
-      const categoryRow=row.cells[3].textcontent.toLowerCase();
-      const priceRow=parseFloat(row.cells[4].textcontent);
-      const quantityRow=parseInt(row.cells[5].textcontent);
+      const nameRow=row.cells[1].textContent.toLowerCase();
+      const codeRow=row.cells[2].textContent.toLowerCase();
+      const categoryRow=row.cells[3].textContent.toLowerCase();
+      const priceRow=parseFloat(row.cells[4].textContent);
+      const quantityRow=parseInt(row.cells[5].textContent);
 
-      let isVisible = true;
+      let isvisible=true;
 
-        if (nameValue && !nameRow.includes(nameValue)) {
-            isVisible = false;
-        }
-        
-        // تحقق من فلتر الكود: هل الكود المدخل موجود في كود الصف؟
-        if (codeValue && !codeRow.includes(codeValue)) {
-            isVisible = false;
-        }
+      if(nameValue&&!nameRow.includes(nameValue))
+        isvisible=false;
 
-        // تحقق من فلتر الفئة (Category): هل الفئة المختارة تطابق فئة الصف؟
-        // (نتأكد أن categoryValue ليس فارغاً قبل المقارنة)
-        if (categoryValue && categoryRow !== categoryValue) {
-            isVisible = false;
-        }
+      if(categoryValue&&categoryRow!==categoryValue)
+        isvisible=false;
 
-        // تحقق من فلتر السعر: هل سعر الصف أكبر من السعر المدخل؟
-        // (نتأكد أن priceValue هو رقم صالح "isNaN = Is Not a Number")
-        if (!isNaN(priceValue) && priceRow > priceValue) {
-            isVisible = false;
-        }
+      if(codeValue&&!codeRow.includes(codeValue))
+        isvisible=false;
 
-        // تحقق من فلتر التوفر (Availability)
-        if (availValue === "in stock" && quantityRow <= 0) {
-            isVisible = false;
-        }
+      if(!isNaN(priceValue)&&priceRow>priceValue)
+        isvisible=false;
 
-        if (isVisible) {
-            row.style.display = ""; // (إظهار)
-        } else {
-            row.style.display = "none"; // (إخفاء)
-        }
+      if(availValue==="In stock"&&quantityRow<=0)
+        isvisible=false;
+
+      if(isvisible){
+        row.style.display="";
+      }
+      else{
+        row.style.display="none";
+      }
+
     });
+
     
+
+
 }
 
+filterMoladbtn.addEventListener("click",filterProducts);
+
+//buttons
+if (tableBody) {
+    tableBody.addEventListener("click", (event) => {
+        const deleteButton = event.target.closest(".delete");
+        if (deleteButton) {
+            const rowToDelete = deleteButton.closest("tr");
+            if (rowToDelete) {
+                rowToDelete.remove();
+            }
+        }
+        const editButton=event.target.closest(".edit");
+        if(editButton){
+          const rowToEdit=editButton.closest("tr");
+          if(rowToEdit){
+            event.preventDefault();
+            window.location.href = "index.html";
+          }
+        }
+    });
+}
+
+  
+
+
+
 });
+
+
+
